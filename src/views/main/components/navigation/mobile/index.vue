@@ -1,6 +1,7 @@
 <template>
   <div class="bg-white dark:bg-zinc-900 duration-500 sticky top-0 left-0 z-10">
     <ul
+      id="ulTarget"
       class="relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden"
       ref="ulTarget"
     >
@@ -13,6 +14,7 @@
       <!-- 汉堡按钮 -->
       <li
         class="fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white z-20 shadow-l-white"
+        @click="onShowPopup"
       >
         <m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon>
       </li>
@@ -26,16 +28,17 @@
       >
         {{ item.name }}
       </li>
-      {{
-        ulScrollLeft
-      }}
     </ul>
+    <m-popup v-model="isVisable">
+      <menu-vue @onItemClick="onItemClick" :categorys="data"></menu-vue>
+    </m-popup>
   </div>
 </template>
 
 <script setup>
-import { useScroll } from '@vueuse/core';
+import { useScroll, useElementSize } from '@vueuse/core';
 import { onBeforeUpdate, ref, watch } from 'vue';
+import MenuVue from '../../menu/index.vue';
 
 defineProps({
   data: {
@@ -77,10 +80,29 @@ watch(currentCategoryIndex, (val) => {
     transform: `translateX(${ulScrollLeft.value + left - 10}px)`,
     width: width + 'px'
   };
+  // const { width: w } = ulTarget.value.getBoundingClientRect();
+  // const x = left - w + width + 80;
+  // if (left > w / 2) {
+  //   console.log(x);
+  //   // console.log(ulTarget.value.scrollTo);
+  //   const ele = document.getElementById('ulTarget');
+  //   console.log(ele);
+  //   ele.scrollTo(ulScrollLeft.value + x, 0);
+  // }else {
+
+  // }
+  // ulScrollLeft.value =
 });
 
 const onItemClick = (index) => {
   currentCategoryIndex.value = index;
+};
+
+// 控制popup展示
+const isVisable = ref(false);
+
+const onShowPopup = () => {
+  isVisable.value = true;
 };
 </script>
 
