@@ -22,6 +22,7 @@ export default defineConfig({
   },
   // 代理
   server: {
+    port: 8080,
     proxy: {
       // 代理所有 /api 的请求，该求情将被代理到 target 中
       '/api': {
