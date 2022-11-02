@@ -19,7 +19,7 @@
         <m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon>
       </li>
       <li
-        v-for="(item, index) in data"
+        v-for="(item, index) in $store.getters.categorys"
         :key="item.name"
         class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
         :class="{ 'text-zinc-100': currentCategoryIndex === index }"
@@ -39,13 +39,6 @@
 import { useScroll, useElementSize } from '@vueuse/core';
 import { onBeforeUpdate, ref, watch } from 'vue';
 import MenuVue from '../../menu/index.vue';
-
-defineProps({
-  data: {
-    type: Array,
-    required: true
-  }
-});
 
 // 滑块
 const sliderStyle = ref({
