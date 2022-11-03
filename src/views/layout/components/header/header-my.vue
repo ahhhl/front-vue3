@@ -2,7 +2,7 @@
   <m-popover class="flex items-center">
     <template #reference>
       <div
-        class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 hover:bg-zinc-100"
+        class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 hover:bg-zinc-100 dark:hover:bg-zinc-900"
       >
         <img
           class="w-3 h-3 rounded-sm"
@@ -13,7 +13,7 @@
         <m-svg-icon
           class="h-1.5 w-1.5 ml-0.5"
           name="down-arrow"
-          fillClass="fill-zinc-900"
+          fillClass="fill-zinc-900 dark:fill-zinc-300"
         ></m-svg-icon>
         <!-- vip -->
         <m-svg-icon
@@ -27,14 +27,16 @@
       <div
         v-for="menu in menuArr"
         :key="menu.id"
-        class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60"
+        class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800"
       >
         <m-svg-icon
           :name="menu.icon"
           class="w-1.5 h-1.5 mr-1"
-          fillClass="fill-zinc-900"
+          fillClass="fill-zinc-900 dark:fill-zinc-300"
         ></m-svg-icon>
-        <span class="text-zinc-900 text-sm">{{ menu.title }}</span>
+        <span class="text-zinc-900 text-sm dark:text-zinc-300">{{
+          menu.title
+        }}</span>
       </div>
     </div>
   </m-popover>
