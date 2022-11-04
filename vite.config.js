@@ -28,7 +28,8 @@ export default defineConfig({
       '/api': {
         // 代理请求之后的请求地址
         target:
-          'https://www.fastmock.site/mock/3d71b0265c8f0685d48f4378c03b926c/',
+          // 'https://www.fastmock.site/mock/3d71b0265c8f0685d48f4378c03b926c/',
+          'https://api.imooc-front.lgdsunday.club/',
         // 跨域
         changeOrigin: true
       }
