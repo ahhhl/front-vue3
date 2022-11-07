@@ -73,11 +73,17 @@ import { computed } from '@vue/runtime-core';
 
 const props = defineProps({
   // icon 图标
-  icon: String,
+  icon: {
+    type: String
+  },
   // icon 颜色
-  iconColor: String,
+  iconColor: {
+    type: String
+  },
   // icon 图标类名 (tailwind)
-  iconClass: String,
+  iconClass: {
+    type: String
+  },
   // 按钮风格
   type: {
     type: String,
@@ -90,6 +96,7 @@ const props = defineProps({
       if (!result) {
         throw new Error(`type 必须是 ${keys.join(', ')}中的一个`);
       }
+      return result;
     }
   },
   // 大小风格
@@ -102,6 +109,7 @@ const props = defineProps({
       if (!result) {
         throw new Error(`size 必须是 ${keys.join(', ')}中的一个`);
       }
+      return result;
     }
   },
   // 按钮点击时,是否需要动画

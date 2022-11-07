@@ -63,6 +63,7 @@ const props = defineProps({
           `你的placement 必须是 ${placementEnum.join(', ')}中的一个`
         );
       }
+      return result;
     }
   }
 });
