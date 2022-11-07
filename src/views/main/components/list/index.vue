@@ -1,6 +1,11 @@
 <template>
-  <div class="w-full flex flex-wrap">
-    <m-waterfall :data="" :nodeKey="" :column="" :picturePreReading="">
+  <div>
+    <m-waterfall
+      :data="pexelsList"
+      :nodeKey="'id'"
+      :column="5"
+      :picturePreReading="true"
+    >
       <template v-slot="{ item, width }">
         <item-vue :data="item"></item-vue>
       </template>
