@@ -9,7 +9,9 @@ import { computed } from 'vue';
  */
 export const isMobileTerminal = computed(() => {
   // 方式1：
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
   // return width.value < PC_DEVICE_WIDTH
 });
 
