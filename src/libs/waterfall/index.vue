@@ -155,7 +155,7 @@ const waitImgComplete = () => {
   // 获取所有的 img 标签图片
   const allImgs = getAllImg(imgElements);
   // 等待图片加载完成
-  onCompleteImgs(allImgs).then((res) => {
+  onCompleteImgs(allImgs).then(() => {
     itemElements.forEach((el) => {
       itemHeights.push(el.offsetHeight);
     });
@@ -260,6 +260,35 @@ watch(
   {
     deep: true,
     immediate: true
+  }
+);
+
+/**
+ * 重新构建瀑布流
+ */
+const reset = () => {
+  setTimeout(() => {
+    // 重新计算列宽
+    useColumnWidth();
+    console.log(columnWidth.value);
+    props.data.forEach((item) => {
+      item._style = null;
+    });
+  }, 500);
+};
+/**
+ * 监听列数的变化
+ */
+watch(
+  () => props.column,
+  () => {
+    if (props.picturePreReading) {
+      columnWidth.value = 0;
+      // 数据改变之后,视图改变之后的回调
+      reset();
+    } else {
+      reset();
+    }
   }
 );
 </script>
