@@ -1,4 +1,5 @@
 import axios from 'axios';
+import createIcodeAndcodetype from './createIcodeAndcodetype';
 // import store from '@/store'
 // import { message as $message } from '@/libs';
 
@@ -10,7 +11,9 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   (config) => {
-    // config.headers.icode = '你需要在这里填入你的 icode'
+    const { icode, codetype } = createIcodeAndcodetype();
+    config.headers.icode = icode;
+    config.headers.codetype = codetype;
     // if (store.getters.token) {
     //   // 如果token存在 注入token
     //   config.headers.Authorization = `Bearer ${store.getters.token}`

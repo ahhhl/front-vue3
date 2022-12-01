@@ -1,7 +1,7 @@
 <template>
   <!-- 一级路由出口 -->
-  <div class="h-screen fixed top-0 left-0 w-screen">
-    <router-view></router-view>
+  <div>
+    <router-view :class="classNames"></router-view>
     <!-- <m-transition-router-view
       mainComponentName="home"
       :routerType="$store.getters.routerType"
@@ -9,6 +9,12 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { isMobileTerminal } from './utils/flexible';
+
+const classNames = isMobileTerminal.value
+  ? 'h-screen w-screen fixed top-0 left-0'
+  : '';
+</script>
 
 <style lang="scss" scoped></style>

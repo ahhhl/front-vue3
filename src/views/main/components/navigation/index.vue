@@ -1,5 +1,5 @@
 <template>
-  <mobile-navigation-vue :data="categoryData" v-if="isMobileTerminal" />
+  <mobile-navigation-vue v-if="isMobileTerminal" />
   <pc-navigation-vue v-else></pc-navigation-vue>
 </template>
 
@@ -7,15 +7,10 @@
 import { isMobileTerminal } from '@/utils/flexible';
 import mobileNavigationVue from './mobile/index.vue';
 import pcNavigationVue from './pc/index.vue';
-import { getCategory } from '@/api/category.js';
-import { ref } from '@vue/reactivity';
+import { useStore } from 'vuex';
 
-const categoryData = ref([]);
-const getCategoryData = async () => {
-  const { categorys } = await getCategory();
-  categoryData.value = categorys;
-};
-getCategoryData();
+const store = useStore();
+store.dispatch('category/useCategoryData');
 </script>
 
 <style lang="scss" scoped></style>
